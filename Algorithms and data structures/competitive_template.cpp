@@ -1,3 +1,6 @@
+#pragma GCC optimize("Ofast,unroll-loops")
+#pragma GCC target("avx,avx2,fma")
+
 #include <bits/stdc++.h>
 
 #define int long long
