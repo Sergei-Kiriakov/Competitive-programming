@@ -2,7 +2,7 @@ class Hash
 {
 protected:
     pair<unsigned long long, unsigned long long> hash;
-    constexpr static unsigned long long mod1 = 1e9 + 7, mod2 = 1e9 + 9, d = 179;
+    constexpr static unsigned long long mod1 = 1e9 + 271, mod2 = 1e9 + 87, d = 179;
 public:
     Hash ()
     {
