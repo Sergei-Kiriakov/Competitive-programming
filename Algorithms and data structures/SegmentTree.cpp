@@ -4,10 +4,12 @@ class SegmentTree
 protected:
     struct Node
     {
+        // Значение в узле
         type_value value;
 
         Node () {value = type_value(); }
         Node(type_value value_) { value = value_; }
+        // Тут основная операция
         Node operator+(Node v) { return Node(value + v.value); }
     };
     vector<Node> tree;
@@ -35,9 +37,9 @@ protected:
         }
         int tm = (tl + tr) / 2;
         Node ans;
-        if (l <= tm && tm + 1 <= r) 
+        if (l <= tm && tm + 1 <= r)
             return Get(l, tm, tl, tm, v * 2 + 1) +
-            Get(tm + 1, r, tm + 1, tr, v * 2 + 2);
+                   Get(tm + 1, r, tm + 1, tr, v * 2 + 2);
         if (l <= tm) return Get(l, r, tl, tm, v * 2 + 1);
         if (tm + 1 <= r) return Get(l, r, tm + 1, tr, v * 2 + 2);
     }
@@ -60,17 +62,15 @@ public:
     {
         size = a.size();
         tree = vector<Node> (4 * size);
-        build(a, 0, size - 1);
+        build(a, 0, size – 1);
     }
-
+    // 0 индексация
     type_value get(int l, int r)
     {
-        return Get(l, r, 0, size - 1, 0).value;
+        return Get(l, r, 0, size – 1, 0).value;
     }
     void update (int pos, type_value new_val)
     {
-        Update(pos, new_val, 0, size - 1, 0);
+        Update(pos, new_val, 0, size – 1, 0);
     }
 };
-
-//https://codeforces.com/gym/100249 - for check
