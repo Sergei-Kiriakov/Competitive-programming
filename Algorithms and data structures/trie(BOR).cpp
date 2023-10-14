@@ -12,8 +12,8 @@ void add(string& s){
     Node* cur = beg;
     cur ->cnt++;
     for (int i=0; i<s.size(); i++){
-        if (cur->a[s[i]-‘a’]==nullptr) cur->a[s[i]-‘a’] = new Node();
-        cur = cur->a[s[i]-‘a’];
+        if (cur->a[s[i]-'a']==nullptr) cur->a[s[i]-'a'] = new Node();
+        cur = cur->a[s[i]-'a'];
         cur->cnt++;
     }
 }

@@ -62,15 +62,15 @@ public:
     {
         size = a.size();
         tree = vector<Node> (4 * size);
-        build(a, 0, size – 1);
+        build(a, 0, size - 1);
     }
     // 0 индексация
     type_value get(int l, int r)
     {
-        return Get(l, r, 0, size – 1, 0).value;
+        return Get(l, r, 0, size - 1, 0).value;
     }
     void update (int pos, type_value new_val)
     {
-        Update(pos, new_val, 0, size – 1, 0);
+        Update(pos, new_val, 0, size - 1, 0);
     }
 };
