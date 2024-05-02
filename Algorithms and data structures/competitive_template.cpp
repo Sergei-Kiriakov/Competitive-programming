@@ -17,9 +17,7 @@ using namespace std;
 constexpr int mod = 1e9 + 7;
 
 void solve()
-{
-    return;
-}
+{ return; }
 
 int32_t main()
 {
@@ -31,12 +29,8 @@ int32_t main()
     mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
     int tt = 1;
     cin >> tt;
-    while(tt-->0)
-    {
-        solve();
-    }  
+    while(tt-->0) solve();
 }
-
 
 /*
 */  
