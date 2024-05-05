@@ -1,12 +1,12 @@
 int phi (int n)
 {
     int result = n;
-    for (int I = 2; I * I <= n; ++i)
-        if (n % I == 0)
+    for (int i = 2; i * i <= n; ++i)
+        if (n % i == 0)
         {
-            while (n % I == 0)
-                n /= I;
-            result -= result / I;
+            while (n % i == 0)
+                n /= i;
+            result -= result / i;
         }
     if (n > 1)
         result -= result / n;
