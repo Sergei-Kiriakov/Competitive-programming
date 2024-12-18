@@ -1,31 +1,45 @@
 template <typename type_value = int>
 class SegmentTree
 {
+    // 0 indexing, all requests [l, r]
 protected:
+    // !!! Choose needed neutral unit for your operation !!!
+//    static const int neutral = numeric_limits<int>::min(); // for max operation
+    static const int neutral = numeric_limits<int>::max(); // for min operation
+//    static const int neutral = 0; // for sum operation
+
+    type_value operator+ (type_value v) {return min(this, v);}
+
     struct Node
     {
-        // Значения в узлах
+        // value in nodes
         type_value value;
         type_value add;
 
-        Node () {value = type_value(); add = type_value(); }
-        Node(type_value value_) { value = value_; add = type_value(); }
-        Node(type_value value_, type_value add_) { value = value_; add = add_; }
-        // Основная операция
-        Node operator+(Node v) { return Node(value + v.value); }
+        type_value operator+ (type_value v) {return min(this, v);}
+
+        Node () {value = neutral; add = neutral;}
+        Node(type_value value_) { value = value_; add = neutral;}
+        Node(type_value value_, type_value add_) { value = value_; add = add_;}
+        // !!! Change here !!!
+        Node operator+(Node v) { return Node(min(value, v.value)); }
+        void prop_add(type_value v) {add = min(add, v);}
+        void prop_value() {value = min(add, value);}
+        // !!! Change here !!!
     };
+
     vector<Node> tree;
     int size;
-    // Проталкивание
+    // Propagation
     void Propagation(int v)
     {
         if (v * 2 + 2 < tree.size())
         {
-            tree[v * 2 + 1].add += tree[v].add;
-            tree[v * 2 + 2].add += tree[v].add;
+            tree[v * 2 + 1].prop_add(tree[v].add);
+            tree[v * 2 + 2].prop_add(tree[v].add);
         }
-        tree[v].value += tree[v].add;
-        tree[v].add = type_value();
+        tree[v].prop_value();
+        tree[v].add = neutral;
     }
     void build (vector<type_value> &a, int tl, int tr, int v = 0)
     {
@@ -45,7 +59,6 @@ protected:
         if (tl == l && tr == r)
             return tree[v];
         int tm = (tl + tr) / 2;
-        Node ans;
         if (l <= tm && tm + 1 <= r)
             return Get(l, tm, tl, tm, v * 2 + 1) +
                    Get(tm + 1, r, tm + 1, tr, v * 2 + 2);
@@ -58,7 +71,7 @@ protected:
         if (l > r) return;
         if (tl == l && tr == r)
         {
-            tree[v].add += new_val;
+            tree[v].prop_add(new_val);
             Propagation(v);
             return;
         }
@@ -74,7 +87,7 @@ public:
         tree = vector<Node> (4 * size);
         build(a, 0, size - 1);
     }
-    // 0 индексация
+    // 0 indexing
     type_value get(int l, int r)
     {
         return Get(l, r, 0, size - 1, 0).value;
