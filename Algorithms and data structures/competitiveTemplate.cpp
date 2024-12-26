@@ -1,5 +1,5 @@
-#pragma GCC optimize("Ofast,unroll-loops")
-#pragma GCC target("avx,avx2,fma")
+// #pragma GCC optimize("Ofast,unroll-loops")
+// #pragma GCC target("avx,avx2,fma")
 
 #include <bits/stdc++.h>
 
@@ -18,8 +18,8 @@ void solve()
 
 int32_t main()
 {
-    ofstream cout("");
-    ifstream cin("");
+    // ofstream cout("");
+    // ifstream cin("");
     ios::sync_with_stdio(false); cin.tie(nullptr);
     cout << fixed;
     cout.precision(7);
