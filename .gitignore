@@ -1,0 +1,14 @@
+*.js
+*.json
+*_cf_missing.json
+*_cf_work.json
+*accepted_by_contest.json
+.DS_Store
+.claude/
+.vscode/
+CLAUDE.md
+CODESTYLE_CPP.md
+CODESTYLE_PY.md
+accounts/
+cf_collect_*.js
+prompt_template.txt
