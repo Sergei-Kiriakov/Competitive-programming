@@ -42,5 +42,5 @@ into the local `contests/` workspace, which is not tracked by git.
 ## Building a solution
 
 ```bash
-g++ -std=c++17 -O2 file.cpp -o sol && ./sol < input.txt
+g++ -std=c++23 -O2 file.cpp -o sol && ./sol < input.txt
 ```
