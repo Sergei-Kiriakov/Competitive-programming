@@ -12,4 +12,5 @@ CODESTYLE_CPP.md
 CODESTYLE_PY.md
 accounts/
 cf_collect_*.js
+contests/
 prompt_template.txt
