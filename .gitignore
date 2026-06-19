@@ -5,6 +5,7 @@
 *accepted_by_contest.json
 .DS_Store
 .claude/
+.idea/
 .vscode/
 CLAUDE.md
 CODESTYLE_CPP.md
