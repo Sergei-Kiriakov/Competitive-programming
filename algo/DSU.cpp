@@ -21,8 +21,8 @@ public:
         parent = vector<int> (n);
         sz = vector<int> (n, 1);
         nods = vector<Node> (n);
-        for (int I = 0; I < n; ++i)
-        {parent[i] = I; nods[i] = Node(nods_[i]); }
+        for (int i = 0; i < n; ++i)
+        {parent[i] = i; nods[i] = Node(nods_[i]); }
     }
     void add_set (Node v)
     { parent.push_back(n); sz.push_back(1); nods.push_back(v); ++n; }

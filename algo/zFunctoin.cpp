@@ -6,10 +6,10 @@ vector<int> z_function (string s)
     {
         if (i <= r)
             z[i] = min (r - i + 1, z[i - l]);
-        while (I + z[i] < n && s[z[i]] == s[I + z[i]])
+        while (i + z[i] < n && s[z[i]] == s[i + z[i]])
             ++z[i];
         if (i + z[i] - 1 > r)
-        l = I,  r = i + z[i] - 1;
+        l = i,  r = i + z[i] - 1;
     }
     return z;
 }

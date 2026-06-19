@@ -15,7 +15,7 @@ public:
     Hash operator* (Hash h)
     {return Hash((h1 * h.h1) % mod1, (h2 * h.h2) % mod2); }
     bool operator== (Hash h) {return h1 == h.h1 and h2 == h.h2; }
-    bool operator< (Hash h) {return h1 * h2 < h.h1 * h.h2; }
+    bool operator< (Hash h) {return h1 < h.h1 || (h1 == h.h1 && h2 < h.h2); }
 
     friend Hash operator/ (Hash a, Hash b);
 };

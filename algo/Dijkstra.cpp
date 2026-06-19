@@ -1,11 +1,11 @@
 #include <bits/stdc++.h>
 
-void dijkstra(std::vector<std::vector<std::pair<int, int> > > & g, int start=0) {
+std::vector<int> dijkstra(std::vector<std::vector<std::pair<int, int> > > & g, int start=0) {
     int n = g.size();
     std::vector<int> d(n, 1e18);
-    d[0] = 0;
+    d[start] = 0;
     std::priority_queue<std::pair<int, int> > q;
-    q.push({0, 0});
+    q.push({0, start});
     while (!q.empty())
     {
         int v = q.top().second, x = -q.top().first;
@@ -21,4 +21,5 @@ void dijkstra(std::vector<std::vector<std::pair<int, int> > > & g, int start=0) 
             }
         }
     }
+    return d;
 }

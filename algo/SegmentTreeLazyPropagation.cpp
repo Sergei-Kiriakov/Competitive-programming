@@ -8,15 +8,11 @@ protected:
     static const int neutral = numeric_limits<int>::max(); // for min operation
 //    static const int neutral = 0; // for sum operation
 
-    type_value operator+ (type_value v) {return min(this, v);}
-
     struct Node
     {
         // value in nodes
         type_value value;
         type_value add;
-
-        type_value operator+ (type_value v) {return min(this, v);}
 
         Node () {value = neutral; add = neutral;}
         Node(type_value value_) { value = value_; add = neutral;}

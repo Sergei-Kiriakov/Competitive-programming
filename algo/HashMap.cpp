@@ -48,7 +48,8 @@ protected:
     int get_index (type_key key)
     {
         int hash = get_hash(key);
-        return hash % arr.size();
+        int m = arr.size();
+        return ((hash % m) + m) % m;
     }
 
     void Rehash(int new_size)
@@ -97,7 +98,7 @@ protected:
             arr[k] = value;
             return true;
         }
-        if (size_alive + size_dead + 1 > int(factor_rehash * arr.size()))
+        if (size_alive + size_dead + 1 > (int)(factor_rehash * arr.size()))
             Resize();
         if (size_dead > size_alive)
             Rehash(arr.size());
@@ -157,7 +158,7 @@ public:
     type_value operator [](type_key key)
     {
         int k = Find(key);
-        if (k == -1) return arr[0].value;
+        if (k == -1) return type_value();
         return arr[k].value;
     }
 };
