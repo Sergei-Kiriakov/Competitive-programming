@@ -48,8 +48,11 @@ cat > "$f" <<'EOF'
 using namespace std;
 
 #define int long long
+#define double long double
+#define endl "\n"
+#define all(x) (x).begin(), (x).end()
 
-const int MOD = 1e9 + 7;
+const int mod = 1e9 + 7;
 
 int solve (int n, vector<int> a) {
     int ans = 0;
