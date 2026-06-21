@@ -1,5 +1,3 @@
-// HLD: запрос суммы на пути + точечное обновление, веса на вершинах, 0-индексация.
-// по мотивам ru.algorithmica.org/cs/trees/heavy-light (агрегат на Fenwick)
 template<typename T = int>
 class HLD
 {
@@ -46,13 +44,11 @@ public:
         dfs2(0, 0);
         for (int v = 0; v < n; ++v) update(v, val[v]);
     }
-    // присвоить вершине v значение x
     void update (int v, T x)
     {
         fadd(tin[v], x - cur[v]);
         cur[v] = x;
     }
-    // сумма на пути u..v (включительно)
     T query (int u, int v)
     {
         T res = 0;
@@ -66,6 +62,5 @@ public:
         res += fseg(tin[u], tin[v]);
         return res;
     }
-    // сумма в поддереве v
     T subtree (int v) { return fseg(tin[v], tin[v] + sz[v] - 1); }
 };
