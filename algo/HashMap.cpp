@@ -30,8 +30,8 @@ protected:
             alive = true;
         }
 
-        bool operator !=(Node a) { return (key != a.key || value != a.value); }
-        bool operator ==(Node a) { return (key == a.key && value == a.value); }
+        bool operator !=(Node a) { return (key != a.key or value != a.value); }
+        bool operator ==(Node a) { return (key == a.key and value == a.value); }
     };
     vector<Node> arr;
     int size_alive;
@@ -61,7 +61,7 @@ protected:
             arr2[i] = Node();
         std::swap(arr, arr2);
         for (int i = 0; i < arr2.size(); ++i)
-            if (arr2[i].alive && arr2[i].state)
+            if (arr2[i].alive and arr2[i].state)
                 Add(arr2[i]);
         arr2.clear();
     }
@@ -72,9 +72,9 @@ protected:
         int h1 = get_index(key);
         int h2 = 1e6 + 3;
         int i = 0;
-        while (arr[h1].alive && i < arr.size())
+        while (arr[h1].alive and i < arr.size())
         {
-            if (arr[h1].key == key && arr[h1].state)
+            if (arr[h1].key == key and arr[h1].state)
                 return h1;
             h1 = (h1 + h2) % arr.size();
             ++i;
@@ -106,11 +106,11 @@ protected:
         int h2 = 1e6 + 3;
         int i = 0;
         int first_deleted = -1;
-        while (arr[h1].alive && i < arr.size())
+        while (arr[h1].alive and i < arr.size())
         {
-            if (arr[h1] == value && arr[h1].state)
+            if (arr[h1] == value and arr[h1].state)
                 return false;
-            if (!arr[h1].state && first_deleted == -1)
+            if (!arr[h1].state and first_deleted == -1)
                 first_deleted = h1;
             h1 = (h1 + h2) % arr.size();
             ++i;

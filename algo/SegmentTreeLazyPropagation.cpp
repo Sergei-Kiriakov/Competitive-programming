@@ -52,10 +52,10 @@ protected:
     Node Get (int l, int r, int tl, int tr, int v)
     {
         Propagation(v);
-        if (tl == l && tr == r)
+        if (tl == l and tr == r)
             return tree[v];
         int tm = (tl + tr) / 2;
-        if (l <= tm && tm + 1 <= r)
+        if (l <= tm and tm + 1 <= r)
             return Get(l, tm, tl, tm, v * 2 + 1) +
                    Get(tm + 1, r, tm + 1, tr, v * 2 + 2);
         if (l <= tm) return Get(l, r, tl, tm, v * 2 + 1);
@@ -65,7 +65,7 @@ protected:
     {
         Propagation(v);
         if (l > r) return;
-        if (tl == l && tr == r)
+        if (tl == l and tr == r)
         {
             tree[v].prop_add(new_val);
             Propagation(v);

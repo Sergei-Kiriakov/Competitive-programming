@@ -26,7 +26,7 @@ protected:
         if (hv[v] != -1) dfs2(hv[v], h);
         for (int u : g[v])
         {
-            if (u == fa[v] || u == hv[v]) continue;
+            if (u == fa[v] or u == hv[v]) continue;
             dfs2(u, u);
         }
     }
